@@ -2,7 +2,7 @@
 
 https://daringfireball.net/projects/markdown/syntax
 
-##The Vim
+## The Vim
 
 I vim'd  
 Kop does not know how to vim  
