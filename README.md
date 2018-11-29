@@ -11,4 +11,4 @@ Kop does not know how to vim
 *   Green
 *   Blue  
 
-[id]: https://imgur.com/a/BA4PmuA "Grant is insane"
+![Alt text](https://imgur.com/a/BA4PmuA "Grant is insane")
