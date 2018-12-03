@@ -12,3 +12,4 @@ Kop does not know how to vim
 *   Chase
 *   Drew   
 
+![Alt text](http://www.kcindependent.com/wp-content/uploads/2013/08/Champs-3.jpg)
