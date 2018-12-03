@@ -1,14 +1,14 @@
 # domenic
 
+![Alt text](https://dartnewsonline.com/wp-content/gallery/journalism-student-portraits/mchugh-candid-portrait.jpg)  
 https://daringfireball.net/projects/markdown/syntax
 
 ## The Vim
 
 I vim'd  
-Kop does not know how to vim
+Kop does not know how to vim  
 
-*   Red
-*   Green
-*   Blue  
+*   Kop
+*   Chase
+*   Drew   
 
-![Alt text](https://imgur.com/a/BA4PmuA "Grant is insane")
