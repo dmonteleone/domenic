@@ -37,7 +37,7 @@ function Food(x,y) {
 }
 
 function Lion() {
-
+    var diameter = 200;
     var x = mouseX;
     var y = mouseY;
     
