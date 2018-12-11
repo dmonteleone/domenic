@@ -7,8 +7,15 @@ var a = [1, 2, 3];
 function setup() {
     createCanvas(740, 480);
     li = new Lion();
+    var p = int(random(0, numFood));
     for (var i = 0; i < numFood; i++) {
-        feed.push(new Food(random(width), random(height)));
+        if (i === p) {
+            var food = new Food(random(width), random(height));
+            food.poisonous = true;
+            feed.push(food);
+        } else {
+            feed.push(new Food(random(width), random(height)));
+        }
     }
 }
 
@@ -34,9 +41,13 @@ function Food(x, y) {
     this.y = y;
     this.color = color(255, 0, 0);
     this.foodSize = 50;
-
+    this.poisonous = false;
     this.display = function () {
-        fill(this.color);
+        if (this.poisonous) {
+            fill(0, 255, 0);
+        } else {
+            fill(255, 0, 255);
+        }
         ellipse(this.x, this.y, this.foodSize, this.foodSize);
     }
 }
@@ -45,7 +56,7 @@ function Lion() {
     var diameter = 200;
     var x = mouseX;
     var y = mouseY;
-
+    this.poisonous = false;
     this.getDistance = function (other) {
         var dist = Math.sqrt(Math.pow(x - other.x, 2) + Math.pow(y - other.y, 2));
         return dist;
@@ -58,7 +69,11 @@ function Lion() {
             var r1 = food.foodSize / 2;
             var r2 = diameter / 2;
             if (r1 + r2 > d) {
-                console.log('yum');
+                if (food.poisonous) {
+                    window.alert("You have been poisoned");
+                    console.log('poison!');
+                    Lion.poisonous = true;
+                }
                 feed.splice(i, 1);
             }
         }
