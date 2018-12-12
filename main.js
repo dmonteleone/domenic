@@ -1,6 +1,8 @@
 var li;
 var feed = [];
 var numFood = 10;
+var dead = false;
+var score = 0;
 
 var a = [1, 2, 3];
 
@@ -25,10 +27,14 @@ function draw() {
     for (var i = 0; i < feed.length; i++) {
         feed[i].display();
     }
+    fill(0);
+    textSize(30);
+    text('Score: ' + score, 10, 25);
 }
 
 function mousePressed() {
     li.eat();
+    feed.push(new Food(random(width), random(height)));
 
 }
 
@@ -44,9 +50,9 @@ function Food(x, y) {
     this.poisonous = false;
     this.display = function () {
         if (this.poisonous) {
-            fill(0, 255, 0);
+            fill(0, 183, 104);
         } else {
-            fill(255, 0, 255);
+            fill(0, 183, 15);
         }
         ellipse(this.x, this.y, this.foodSize, this.foodSize);
     }
@@ -70,18 +76,26 @@ function Lion() {
             var r2 = diameter / 2;
             if (r1 + r2 > d) {
                 if (food.poisonous) {
-                    window.alert("You have been poisoned");
+                    window.alert("You have been poisoned!");
                     console.log('poison!');
                     Lion.poisonous = true;
+                    dead = true;
                 }
                 feed.splice(i, 1);
+                score++;
             }
         }
     }
 
     this.display = function () {
-        x = mouseX;
-        y = mouseY;
+        if (dead) {
+            x = -500;
+            y = -500;
+        } else {
+            x = mouseX;
+            y = mouseY;
+        }
+
 
         //mane
         noStroke();
@@ -130,7 +144,19 @@ function Lion() {
         //mouth
         if (mouseIsPressed) {
             fill(0);
-            ellipse(x, y + 60, 60, 35);
+            if (dead) {
+                fill(255);
+                noStroke();
+                rect(0, 0, width, height);
+                fill(0);
+                textFont('Georgia');
+                textSize(90);
+                textAlign(CENTER);
+                text("Game Over!", width / 2, height / 2);
+                exit();
+            } else {
+                ellipse(x, y + 60, 60, 35);
+            }
         } else {
             fill('#9a7500');
             triangle(x, y + 40, x - 30, y + 60, x, y + 50);
